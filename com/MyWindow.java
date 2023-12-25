@@ -13,6 +13,7 @@ public class MyWindow extends JFrame {
         super.setSize(400,400);
         super.setLocation(300,200);
         this.creatGUI();
+        this.startClock();
         super.setVisible(true);
     }
 
@@ -29,6 +30,10 @@ public class MyWindow extends JFrame {
         this.setLayout(new GridLayout(2,1));
         this.add(heading);
         this.add(clockLabel);
+    }
+
+    public void startClock(){
+        Timer timer = new Timer(1000,)
     }
 
 }
