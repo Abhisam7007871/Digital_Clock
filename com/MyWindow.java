@@ -2,6 +2,10 @@ package com;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MyWindow extends JFrame {
     private JLabel heading;
@@ -32,8 +36,41 @@ public class MyWindow extends JFrame {
         this.add(clockLabel);
     }
 
-    public void startClock(){
-        Timer timer = new Timer(1000,)
+    public <simpleDateFormat> void startClock(){
+//        Timer timer = new Timer(1000, new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//               String dateTime = new Date().toString();
+//
+//                String dateTime = new Date().toLocaleString()
+//                Date d = new Date();
+//                SimpleDateFormat sfd = new SimpleDateFormat("hh:mm:ss a");
+//                String dateTime = sfd.format(d);
+//                clockLabel.setText(dateTime);
+//            }
+//        });
+//        timer.start();
+
+        Thread t=new Thread(){
+            public void run(){
+                try{
+                    while(true){
+
+                        Date d = new Date();
+                        SimpleDateFormat sfd = new SimpleDateFormat("hh:mm:ss a");
+                        String dateTime = sfd.format(d);
+                        clockLabel.setText(dateTime);
+
+//                        Thread.sleep(1000);
+
+                        Thread.currentThread().sleep(1000);
+
+                    }
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        t.start();
     }
 
 }
